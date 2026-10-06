@@ -1,0 +1,20 @@
+[Unit]
+Description=Forage MCP_INSTALL_FUNNEL_V1 clocks
+After=forage-mcp.service
+Wants=forage-mcp.service
+
+[Service]
+Type=simple
+User=forage
+Group=forage
+WorkingDirectory=/opt/forage
+Environment=PYTHONPATH=/opt/forage/src
+ExecStart=/bin/bash /opt/forage/scripts/mcp_watch.sh
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=forage-mcp-watch
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+[Unit]
+Description=Forage UK company counterparty preflight (x402)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=forage
+Group=forage
+WorkingDirectory=/opt/forage
+EnvironmentFile=-/etc/forage/ch.env
+Environment=FORAGE_CH_HOST=127.0.0.1
+Environment=FORAGE_CH_PORT=4022
+Environment=FORAGE_GEN1_NETWORK=eip155:8453
+ExecStart=/opt/forage/.venv/bin/forage gen1 serve-ch --host 127.0.0.1 --port 4022 --payments
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=forage-ch
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+[Unit]
+Description=Forage MCP check_x402_payment_readiness (distribution experiment)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=forage
+Group=forage
+WorkingDirectory=/opt/forage
+Environment=FORAGE_MCP_HOST=127.0.0.1
+Environment=FORAGE_MCP_PORT=4024
+Environment=FORAGE_MCP_TRANSPORT=streamable-http
+Environment=PYTHONPATH=/opt/forage/src
+ExecStart=/opt/forage/.venv/bin/forage gen1 mcp-preflight
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=forage-mcp
+
+[Install]
+WantedBy=multi-user.target

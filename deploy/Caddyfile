@@ -1,0 +1,12 @@
+138-197-9-7.sslip.io {
+	handle /mcp* {
+		reverse_proxy 127.0.0.1:4024
+	}
+	@sib path /sib/health /v1/oneshot_wallet_token_snapshot* /v1/wallet_payment_readiness* /v1/x402_resource_preflight* /v1/call_before_paying_x402* /v1/capability_resolver* /v1/x402_failover_pick* /v1/x402_budget_check* /v1/x402_option_compat* /v1/onchain_entity_brief*
+	handle @sib {
+		reverse_proxy 127.0.0.1:4023
+	}
+	handle {
+		reverse_proxy 127.0.0.1:4022
+	}
+}

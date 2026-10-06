@@ -1,0 +1,24 @@
+[Unit]
+Description=Forage sibling SKUs (resource preflight + capability resolver)
+After=network-online.target forage-ch.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=forage
+Group=forage
+WorkingDirectory=/opt/forage
+EnvironmentFile=-/etc/forage/ch.env
+Environment=FORAGE_SIB_HOST=127.0.0.1
+Environment=FORAGE_SIB_PORT=4023
+Environment=FORAGE_GEN1_NETWORK=eip155:8453
+ExecStart=/opt/forage/.venv/bin/forage gen1 serve-sib --host 127.0.0.1 --port 4023 --payments
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=forage-sib
+
+[Install]
+WantedBy=multi-user.target

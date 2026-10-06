@@ -1,0 +1,27 @@
+# Owner-controlled policy. Enforced in code (forage.policy + ledger), not prompts.
+# Default: DRY RUN for spending and commercial writes.
+
+global_spend_cap_usd: "50.00"
+per_experiment_spend_cap_usd: "20.00"
+max_transaction_usd: "10.00"
+allowed_action_types:
+  - public_research
+  - web_fetch
+  - browser_read
+  - prepare_artifact
+  - post_offer
+  - send_outreach
+  - collect_payment
+  - fulfill
+allowed_providers:
+  - public_web
+  - mock
+  - manual_channel
+max_model_calls: 40
+max_tool_calls: 80
+max_concurrent_experiments: 3
+max_retries: 2
+deadline_hours: 72
+dry_run: true
+external_writes_enabled: false
+browser_use_enabled: false

@@ -1,0 +1,21 @@
+[Unit]
+Description=Forage sibling SKU market clocks
+After=forage-sib.service
+Wants=forage-sib.service
+
+[Service]
+Type=simple
+User=forage
+Group=forage
+WorkingDirectory=/opt/forage
+EnvironmentFile=-/etc/forage/ch.env
+Environment=PYTHONPATH=/opt/forage/src
+ExecStart=/bin/bash /opt/forage/scripts/sib_watch.sh
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=forage-sib-watch
+
+[Install]
+WantedBy=multi-user.target
