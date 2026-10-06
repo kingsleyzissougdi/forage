@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.jiminfinite/check-x402-payment-readiness",
+  "name": "io.github.kingsleyzissougdi/check-x402-payment-readiness",
   "title": "Check x402 Payment Readiness",
   "description": "Call immediately before paying an x402 resource. Checks payment requirements, network, wallet balance/readiness, and budget; returns PAY/BLOCKED with reason codes. Does not move funds.",
   "version": "0.1.0",

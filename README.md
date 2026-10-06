@@ -26,7 +26,7 @@ Ledger: `data/forage.sqlite` (or `--db` path). Gen-0 report: `data/mechanisms.ge
 
 See `AGENTS.md` and `docs/architecture.md`.
 
-<!-- mcp-name: io.github.jiminfinite/check-x402-payment-readiness -->
+<!-- mcp-name: io.github.kingsleyzissougdi/check-x402-payment-readiness -->
 
 ## MCP: Check x402 Payment Readiness
 
@@ -78,7 +78,7 @@ wallet, or gas abstraction here. Missing that setup is recorded as
 ### Local stdio (optional)
 
 ```bash
-uvx --from git+https://github.com/jiminfinite/forage check-x402-payment-readiness
+uvx --from git+https://github.com/kingsleyzissougdi/forage check-x402-payment-readiness
 ```
 
 Set `FORAGE_MCP_TRANSPORT=stdio` for stdio. Default transport is Streamable HTTP.
